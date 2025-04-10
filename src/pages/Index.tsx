@@ -1,12 +1,51 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
+import CastSection from "@/components/CastSection";
+import TrailerSection from "@/components/TrailerSection";
+import TicketsSection from "@/components/TicketsSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
+  useEffect(() => {
+    document.title = "HIT: The Third Case | Official Movie Website";
+    
+    // Implement countdown timer for release date
+    const countdownElements = document.querySelectorAll('.countdown-value');
+    if (countdownElements.length) {
+      const releaseDate = new Date("May 1, 2025").getTime();
+      
+      const updateCountdown = () => {
+        const now = new Date().getTime();
+        const distance = releaseDate - now;
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        countdownElements[0].textContent = days.toString().padStart(2, '0');
+        countdownElements[1].textContent = hours.toString().padStart(2, '0');
+        countdownElements[2].textContent = minutes.toString().padStart(2, '0');
+        countdownElements[3].textContent = seconds.toString().padStart(2, '0');
+      };
+      
+      updateCountdown(); // Initial update
+      setInterval(updateCountdown, 1000); // Update every second
+    }
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="bg-white relative">
+      <Navbar />
+      <HeroSection />
+      <AboutSection />
+      <CastSection />
+      <TrailerSection />
+      <TicketsSection />
+      <Footer />
     </div>
   );
 };
