@@ -1,7 +1,6 @@
-
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Link as ScrollLink } from "react-scroll";
+import {useState, useEffect} from "react";
+import {motion} from "framer-motion";
+import {Link as ScrollLink} from "react-scroll";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -21,18 +20,18 @@ const Navbar = () => {
   }, [scrolled]);
 
   const navItems = [
-    { name: "Home", target: "hero" },
-    { name: "About", target: "about" },
-    { name: "Cast", target: "cast" },
-    { name: "Trailer", target: "trailer" },
-    { name: "Tickets", target: "tickets" },
+    {name: "Home", target: "hero"},
+    {name: "About", target: "about"},
+    {name: "Cast", target: "cast"},
+    {name: "Teaser", target: "trailer"},
+    {name: "Tickets", target: "tickets"},
   ];
 
   return (
     <motion.nav
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      transition={{duration: 0.5}}
       className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-movie-red to-movie-black transition-all duration-300 ${
         scrolled ? "py-3 shadow-lg" : "py-4"
       }`}
