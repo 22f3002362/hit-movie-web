@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="bg-white min-h-screen flex items-center relative overflow-hidden">
+    <section id="hero" className="bg-white min-h-screen flex items-center relative overflow-hidden pt-20">
       <div className="container mx-auto flex flex-col md:flex-row items-center">
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
@@ -38,7 +38,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="relative"
           >
-            <div className="w-full h-[500px] bg-gray-200 rounded-lg shadow-lg overflow-hidden relative">
+            <div className="w-full h-[500px] bg-white rounded-lg shadow-lg overflow-hidden relative">
               <div className="absolute inset-0 flex items-center justify-center text-3xl text-gray-400">
                 Movie Poster
               </div>

@@ -30,14 +30,14 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 100 }}
-      className={`floating-navbar glass-effect transition-all duration-300 ${
-        scrolled ? "px-6 py-3" : "px-4 py-2"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-movie-red to-movie-black transition-all duration-300 ${
+        scrolled ? "py-3 shadow-lg" : "py-4"
       }`}
     >
-      <div className="flex justify-center items-center">
+      <div className="container mx-auto flex justify-center items-center px-4">
         <ul className="flex space-x-6 md:space-x-12">
           {navItems.map((item) => (
             <li key={item.name}>

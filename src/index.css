@@ -61,10 +61,6 @@
 }
 
 @layer components {
-  .glass-effect {
-    @apply bg-opacity-70 backdrop-blur-md bg-movie-red shadow-lg;
-  }
-  
   .red-gradient {
     @apply bg-gradient-to-br from-movie-red to-movie-black;
   }
@@ -75,9 +71,5 @@
   
   .section-title {
     @apply text-4xl md:text-5xl font-bold mb-8 text-movie-black;
-  }
-  
-  .floating-navbar {
-    @apply fixed top-4 left-1/2 transform -translate-x-1/2 z-50 rounded-full px-2 py-1;
   }
 }
