@@ -23,7 +23,7 @@ const Navbar = () => {
     {name: "Home", target: "hero"},
     {name: "About", target: "about"},
     {name: "Cast", target: "cast"},
-    {name: "Teaser", target: "trailer"},
+    {name: "Trailer", target: "trailer"},
     {name: "Tickets", target: "tickets"},
   ];
 
