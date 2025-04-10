@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
@@ -25,6 +24,7 @@ const Navbar = () => {
     { name: "About", target: "about" },
     { name: "Cast", target: "cast" },
     { name: "Trailer", target: "trailer" },
+    { name: "Songs", target: "songs" },
     { name: "Tickets", target: "tickets" },
   ];
 
