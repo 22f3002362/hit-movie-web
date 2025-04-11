@@ -52,8 +52,8 @@ const AboutSection = () => {
               group of serial killers responsible for the gruesome murders of
               several people.
             </p>
-            <div className="flex gap-6 mt-8">
-              <div className="flex flex-col">
+            <div className="flex flex-wrap gap-4 sm:gap-6 mt-8">
+              <div className="flex flex-col min-w-[100px]">
                 <span className="text-xl font-bold text-movie-red">
                   Director
                 </span>
@@ -61,17 +61,25 @@ const AboutSection = () => {
                   Sailesh Kolanu
                 </span>
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col min-w-[100px]">
                 <span className="text-xl font-bold text-movie-red">Genre</span>
                 <span className="text-lg text-movie-darkGray">
                   Crime, Thriller
                 </span>
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col min-w-[100px]">
                 <span className="text-xl font-bold text-movie-red">
                   Duration
                 </span>
                 <span className="text-lg text-movie-darkGray">2h 15m</span>
+              </div>
+              <div className="flex flex-col min-w-[100px]">
+                <span className="text-xl font-bold text-movie-red">
+                  Production
+                </span>
+                <span className="text-lg text-movie-darkGray">
+                  Unanimous Productions
+                </span>
               </div>
             </div>
           </motion.div>
