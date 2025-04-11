@@ -6,7 +6,6 @@ import CastSection from "@/components/CastSection";
 import TrailerSection from "@/components/TrailerSection";
 import SongsSection from "@/components/SongsSection";
 import TicketsSection from "@/components/TicketsSection";
-import SongsSection from "@/components/SongsSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {

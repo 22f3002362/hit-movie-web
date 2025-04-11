@@ -37,7 +37,7 @@ const AboutSection = () => {
         >
           <motion.div variants={itemVariants}>
             <h2 className="section-title">About The Film</h2>
-            <p className="text-lg text-movie-darkGray mb-6">
+            <p className="text-lg text-justify text-movie-darkGray mb-6">
               "HIT: The Third Case" is an upcoming Indian Telugu-language crime
               thriller film written and directed by Sailesh Kolanu. Produced by
               Prashanti Tipirneni and Nani, under Wall Poster Cinema and
@@ -46,7 +46,7 @@ const AboutSection = () => {
               and Srinidhi Shetty in the lead roles, alongside Adil Pala, Rao
               Ramesh, Brahmaji, and Maganti Srinath.
             </p>
-            <p className="text-lg text-movie-darkGray mb-6">
+            <p className="text-lg text-justify text-movie-darkGray mb-6">
               Arjun Sarkaar, an SP in HIT at Visakhapatnam, gets assigned to a
               high priority case for the HIT in Jammu and Kashmir to catch a
               group of serial killers responsible for the gruesome murders of

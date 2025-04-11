@@ -1,63 +1,122 @@
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
+  const [backgroundImage, setBackgroundImage] = useState("/hero-desktop.png");
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isMobileScreen, setIsMobileScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+
+      // Set background image based on screen size
+      if (width < 640) {
+        setBackgroundImage("/phone.png");
+        setIsMobileScreen(true);
+        setIsSmallScreen(true);
+      } else if (width < 1024) {
+        setBackgroundImage("/tablet (1).png");
+        setIsMobileScreen(false);
+        setIsSmallScreen(true);
+      } else {
+        setBackgroundImage("/hero.png");
+        setIsMobileScreen(false);
+        setIsSmallScreen(false);
+      }
+    };
+
+    // Set initial image and screen states
+    handleResize();
+
+    // Add resize listener
+    window.addEventListener("resize", handleResize);
+
+    // Clean up
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section
       id="hero"
-      className="bg-cover bg-center min-h-screen flex items-center relative overflow-hidden pt-20"
-      style={{backgroundImage: "url('/hero.png')"}}
+      className="relative flex min-h-screen items-center overflow-hidden bg-cover bg-center pt-20"
+      style={{ backgroundImage: `url('${backgroundImage}')` }}
     >
-      <div className="container mx-auto flex flex-col md:flex-row items-center">
-        <motion.div
-          initial={{opacity: 0, x: -50}}
-          animate={{opacity: 1, x: 0}}
-          transition={{duration: 0.8}}
-          className="md:w-1/2 p-8"
+      <div className="container mx-auto px-4">
+        <div
+          className={`flex ${
+            isSmallScreen
+              ? "flex-col items-center text-center"
+              : "flex-row items-start"
+          }`}
         >
-          <img
-            src="/hitlogo.png"
-            alt="HIT: The Third Case Logo"
-            className="w-full max-w-md"
-          />
-          <motion.p
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
-            transition={{delay: 0.5, duration: 0.8}}
-            className="text-movie-black text-lg mt-6 max-w-lg"
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className={`${
+              isSmallScreen ? "w-full" : "lg:w-1/2"
+            } p-4 sm:p-6 md:p-8`}
           >
-            The thrilling conclusion to the HIT franchise arrives May 1, 2025
-          </motion.p>
-        </motion.div>
+            <img
+              src="/case.PNG"
+              alt="HIT: The Third Case Logo"
+              className={`${isSmallScreen ? "mx-auto" : ""} w-full max-w-md`}
+            />
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className={`mt-5 max-w-lg text-lg ${
+                isSmallScreen ? "mx-auto" : "mx-auto"
+              } ${isMobileScreen ? "hidden" : "text-[#843333]"} sm:mt-6`}
+            >
+              <b>Get Ready for the Ultimate Showdown! Join the Battle!</b>
+            </motion.p>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Release date tag in bottom right corner */}
+      {/* Release date tag - improved positioning */}
       <motion.div
-        initial={{opacity: 0, y: 20}}
-        animate={{opacity: 1, y: 0}}
-        transition={{duration: 0.8, delay: 1}}
-        className="absolute bottom-10 left-60 bg-movie-red p-3 rounded-lg shadow-lg text-white font-bold"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1 }}
+        className={`absolute ${
+          isMobileScreen
+            ? "bottom-32 left-1/3 -translate-x-1/2"
+            : isSmallScreen
+            ? "absolute top-40 right-10 -translate-x-1/2"
+            : "bottom-32 right-40"
+        } z-10 rounded-lg bg-movie-red p-3 px-5 text-white shadow-lg`}
       >
-        May 1, 2025
+        <span className="font-bold">May 1, 2025</span>
       </motion.div>
 
+      {/* Improved scroll indicator */}
       <motion.div
-        initial={{opacity: 0}}
-        animate={{opacity: [0, 1, 0]}}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 1, 0] }}
         transition={{
           repeat: Infinity,
           duration: 2,
           repeatDelay: 1,
         }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        className={`absolute ${
+          isMobileScreen ? "bottom-10" : "bottom-10"
+        } left-1/2 -translate-x-1/2 z-10`}
       >
-        <div className="text-movie-red flex flex-col items-center">
-          <span className="block mb-2">Scroll Down</span>
+        <div className="flex flex-col items-center text-movie-red">
+          <span className="mb-1 block text-sm sm:mb-2 sm:text-base">
+            Scroll Down
+          </span>
           <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            className="animate-bounce"
           >
             <path
               d="M12 5V19M12 19L5 12M12 19L19 12"
