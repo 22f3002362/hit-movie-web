@@ -19,12 +19,12 @@ const CastSection = () => {
       image: "/srinidhi.jpeg",
       profileUrl: "https://www.instagram.com/srinidhi_shetty/",
     },
-    // {
-    //   name: "Prateik Babbar",
-    //   character: "Not revealed yet",
-    //   image: "/prateik.jpg",
-    //   profileUrl: "https://www.instagram.com/_prat/",
-    // },
+    {
+      name: "Rao Ramesh",
+      character: "DSP Nageshwar Rao",
+      image: "/ramesh.jpeg",
+      profileUrl: "#",
+    },
     // {
     //   name: "Samuthirakani",
     //   character: "Not revealed yet",

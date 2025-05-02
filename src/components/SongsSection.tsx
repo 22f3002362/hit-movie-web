@@ -24,6 +24,15 @@ const SongsSection = () => {
         "https://open.spotify.com/track/1kEzNdy259gZfOHnSIVV2v?si=3c5419097b43475a",
       youtube: "https://youtu.be/UzrDeGbqG4U?si=eBR_A8HD0kB5yCuC",
     },
+    {
+      id: 3,
+      title: "Thanu - Telugu",
+      artist: "Anirudh Ravichander, Mickey J Meyer",
+      duration: "4:08",
+      spotify:
+        "https://open.spotify.com/track/4FsuiOBLNk6pEtFalGC11G?si=c89054e34e1e487c",
+      youtube: "https://youtu.be/28er1wF-rvo?si=y43a1q0IdndzZtM2",
+    },
   ];
 
   return (

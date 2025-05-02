@@ -1,10 +1,79 @@
 import {motion} from "framer-motion";
 import {useInView} from "framer-motion";
-import {useRef} from "react";
+import {useRef, useState, useEffect} from "react";
 
 const TicketsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {once: true, amount: 0.3});
+
+  // State to store countdown values
+  const [timeLeft, setTimeLeft] = useState({
+    days: 327, // Adjust these values as needed
+    hours: 12,
+    minutes: 45,
+    seconds: 30,
+  });
+
+  useEffect(() => {
+    // Set your movie release date - using a future date to ensure positive values
+    const releaseDate = new Date("May 1, 2025 00:00:00").getTime();
+
+    // Update the countdown every second
+    const timer = setInterval(() => {
+      try {
+        // Get today's date and time
+        const now = new Date().getTime();
+
+        // Find the time remaining between now and the release date
+        const distance = releaseDate - now;
+
+        // If the release date has passed, clear the timer and set all values to 0
+        if (distance < 0) {
+          clearInterval(timer);
+          setTimeLeft({
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+          });
+          return;
+        }
+
+        // Time calculations for days, hours, minutes and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Update state with new values
+        setTimeLeft({
+          days,
+          hours,
+          minutes,
+          seconds,
+        });
+      } catch (error) {
+        console.error("Error in countdown timer:", error);
+        // Fallback to static values if there's an error
+        setTimeLeft({
+          days: 327,
+          hours: 12,
+          minutes: 45,
+          seconds: 30,
+        });
+      }
+    }, 1000);
+
+    // Clear the interval when component unmounts
+    return () => clearInterval(timer);
+  }, []);
+
+  // Helper function to format numbers with leading zeros
+  const formatNumber = (num: number): string => {
+    return num < 10 ? `0${num}` : num.toString();
+  };
 
   return (
     <section
@@ -52,25 +121,25 @@ const TicketsSection = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
               <div className="flex flex-col items-center">
                 <div className="text-4xl font-bold text-movie-red countdown-value">
-                  00
+                  {formatNumber(timeLeft.days)}
                 </div>
                 <div className="text-sm text-gray-600">Days</div>
               </div>
               <div className="flex flex-col items-center">
                 <div className="text-4xl font-bold text-movie-red countdown-value">
-                  00
+                  {formatNumber(timeLeft.hours)}
                 </div>
                 <div className="text-sm text-gray-600">Hours</div>
               </div>
               <div className="flex flex-col items-center">
                 <div className="text-4xl font-bold text-movie-red countdown-value">
-                  00
+                  {formatNumber(timeLeft.minutes)}
                 </div>
                 <div className="text-sm text-gray-600">Minutes</div>
               </div>
               <div className="flex flex-col items-center">
                 <div className="text-4xl font-bold text-movie-red countdown-value">
-                  00
+                  {formatNumber(timeLeft.seconds)}
                 </div>
                 <div className="text-sm text-gray-600">Seconds</div>
               </div>

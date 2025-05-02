@@ -6,7 +6,7 @@ const TrailerSection = () => {
   const isInView = useInView(containerRef, {once: false, amount: 0.6});
 
   // YouTube video ID - replace with your actual trailer ID
-  const youtubeVideoId = "4ydZgW5M4Wk";
+  const youtubeVideoId = "DKSlOAtzoiY";
 
   return (
     <section id="trailer" className="py-24 bg-movie-black text-white relative">
@@ -20,7 +20,7 @@ const TrailerSection = () => {
           viewport={{once: true}}
           className="text-4xl md:text-5xl font-bold mb-6 text-white text-center"
         >
-          Official Teaser
+          Official Trailer
         </motion.h2>
 
         <motion.p

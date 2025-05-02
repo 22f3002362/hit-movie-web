@@ -7,10 +7,7 @@ const HeroSection = () => {
   const [isMobileScreen, setIsMobileScreen] = useState(false);
 
   // Notification messages that will scroll
-  const notifications = [
-    "Single: Abki baar Arjun Sarkaar is out now!!",
-    "Trailer will be live on 14th April, 2025",
-  ];
+  const notifications = ["Hit: The Third Case is now all yours.."];
 
   // Current notification index
   const [currentNotification, setCurrentNotification] = useState(0);
